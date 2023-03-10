@@ -2,14 +2,15 @@
 public class Pizza {
 
     private String top, crust, sauce, cheese, name;
-    private double pizzaPrice, extraCrustPrice, extraSaucePrice, extraCheesePrice, extraTopPrice;
+    private double price, extraCrustPrice, extraSaucePrice, extraCheesePrice, extraTopPrice;
 
-    public Pizza(String name, String crust, String sauce, String cheese, String top){
+    public Pizza(String name, String crust, String sauce, String cheese, String top, int price){
         this.name = name;
         this.crust = crust;
         this.sauce = sauce;
         this.cheese = cheese;
         this.top = top;
+        this.price = price;
     }
 
     public String getTop() {
@@ -45,11 +46,11 @@ public class Pizza {
     }
 
     public double getPrice() {
-        return pizzaPrice;
+        return price;
     }
 
     public void setPrice(double price) {
-        this.pizzaPrice = price;
+        this.price = price;
     }
     public void setName(String name){
         this.name = name;
@@ -58,14 +59,12 @@ public class Pizza {
         return name;
     }
 
-
-
     public String toString(){
         return "Crust: " + crust + "" +
                 "Sauce: " + sauce + "" +
                 "Cheese: " + cheese + "" +
                 "Toppings: " + top + "" +
-                "Price: " + pizzaPrice;
+                "Price: " + price;
     }
 
 }
