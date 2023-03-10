@@ -1,11 +1,15 @@
 package Menus;
 
 import Menus.SelectionMenu;
+import Objects.Person;
+import com.sun.tools.javac.Main;
 
 import javax.swing.*;
 import java.awt.*;
 
 public class LoginMenu extends JPanel{
+
+
     Window w;
     SelectionMenu selectionMenu;
     public LoginMenu(Window w, SelectionMenu selectionMenu){
@@ -45,6 +49,7 @@ public class LoginMenu extends JPanel{
         JButton loginButton = new JButton("Login");
         loginButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         loginButton.addActionListener(e -> {
+            selectionMenu.person = new Person(nameField.getText(), addressField.getText());
             w.setSize(400, 600);
             w.getContentPane().removeAll();
             w.add(selectionMenu);

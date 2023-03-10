@@ -1,5 +1,6 @@
 package Menus;
 
+import Objects.Person;
 import Objects.Pizza;
 
 import Presets.PizzaPresets;
@@ -14,24 +15,38 @@ import java.util.ArrayList;
 
 public class SelectionMenu extends JPanel {
 
-    Window menu;
+    Window w;
+    Person person;
 
-    public SelectionMenu(Window menu){
-    this.menu = menu;
+
+    public SelectionMenu(Window w){
+    this.w = w;
     initPanel();
     }
 
     public void initPanel(){
         System.out.println("Menus.SelectionMenu initialized");
         generatePanel();
-        setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-
+        setLayout(new BorderLayout());
         JScrollPane scrollBar=new JScrollPane(pizzaPanel, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
         scrollBar.getVerticalScrollBar().setUnitIncrement(16);
         add(scrollBar);
 
-    }
+        JMenuBar menubar = new JMenuBar();
+        JMenu menu = new JMenu("Profile");
+        JMenuItem logout= new JMenuItem("Logout");
+        JMenuItem profile = new JMenuItem("Profile");
+        menu.add(profile);menu.add(logout);
+        menubar.add(menu);
+        add(menubar, BorderLayout.NORTH);
 
+        profile.addActionListener(e -> {
+            w.setSize(200, 200);
+            w.getContentPane().removeAll();
+            w.add(new PersonInfoMenu(w, person, this));
+            w.revalidate();
+        });
+    }
     JPanel pizzaPanel = new JPanel();
 
     public void generatePanel(){
@@ -49,7 +64,6 @@ public class SelectionMenu extends JPanel {
             label.setAlignmentX(Component.CENTER_ALIGNMENT);
             panel.add(label);
 
-
             panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
 
             panel.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
@@ -63,7 +77,5 @@ public class SelectionMenu extends JPanel {
             pizzaPanel.add(panel);
         }
         pizzaPanel.setLayout(new WrapLayout());
-
     }
-
 }
