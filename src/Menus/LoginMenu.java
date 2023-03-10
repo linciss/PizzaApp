@@ -1,4 +1,9 @@
+package Menus;
+
+import Menus.SelectionMenu;
+
 import javax.swing.*;
+import java.awt.*;
 
 public class LoginMenu extends JPanel{
     Window w;
@@ -10,12 +15,13 @@ public class LoginMenu extends JPanel{
     }
 
     public void initPanel(){
-
+        w.setSize(200, 200);
         generatePanel();
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
     }
 
     public void generatePanel(){
+
         JPanel loginPanel = new JPanel();
         loginPanel.setLayout(new BoxLayout(loginPanel, BoxLayout.Y_AXIS));
 
@@ -24,13 +30,28 @@ public class LoginMenu extends JPanel{
         JTextField nameField = new JTextField();
         JTextField addressField = new JTextField();
 
+        nameLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        addressLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        //sets layout for the nameField to be horizontal
+        nameField.setMaximumSize(new Dimension(200, 20));
+
+
+        // sets layout for the addressField to be horizontal
+        addressField.setMaximumSize(new Dimension(200, 20));
+
+
+        //login button to login, when pressed show the selection menu
         JButton loginButton = new JButton("Login");
+        loginButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         loginButton.addActionListener(e -> {
+            w.setSize(400, 600);
             w.getContentPane().removeAll();
             w.add(selectionMenu);
             w.revalidate();
-
         });
+
+
         loginPanel.add(nameLabel);
         loginPanel.add(nameField);
         loginPanel.add(addressLabel);

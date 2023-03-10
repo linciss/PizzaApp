@@ -1,3 +1,8 @@
+package Menus;
+
+import Objects.Pizza;
+
+import Presets.PizzaPresets;
 import utils.WrapLayout;
 
 import javax.swing.*;
@@ -17,7 +22,7 @@ public class SelectionMenu extends JPanel {
     }
 
     public void initPanel(){
-        System.out.println("SelectionMenu initialized");
+        System.out.println("Menus.SelectionMenu initialized");
         generatePanel();
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
