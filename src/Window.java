@@ -1,15 +1,16 @@
 import javax.swing.*;
 
-public class MainMenu extends JFrame {
+public class Window extends JFrame {
     SelectionMenu selectionMenu = new SelectionMenu(this);
-    public MainMenu (){
+    LoginMenu loginMenu = new LoginMenu(this, selectionMenu);
+    public Window(){
         setSize(400, 600);
+        //add(selectionMenu);
+        add(loginMenu);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        add(selectionMenu);
         setVisible(true);
 
     }
-
 
 
 }

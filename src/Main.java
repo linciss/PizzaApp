@@ -8,6 +8,6 @@ public class Main {
             System.out.println(pizza.toString());
         }
 
-        new MainMenu();
+        new Window();
     }
 }
