@@ -1,2 +1,2 @@
-# Pizzeria
-Pizzeria
+# PizzaApp
+## This is my PizzaApp repo
