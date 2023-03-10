@@ -1,4 +1,12 @@
+import utils.WrapLayout;
+
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
+import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 
 public class SelectionMenu extends JPanel {
 
@@ -10,7 +18,7 @@ public class SelectionMenu extends JPanel {
     }
 
     public void initPanel(){
-
+        generatePanel();
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
         JScrollPane scrollBar=new JScrollPane(pizzaPanel, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
@@ -20,6 +28,35 @@ public class SelectionMenu extends JPanel {
 
     JPanel pizzaPanel = new JPanel();
 
+    public void generatePanel(){
+        ArrayList<Pizza> pizzaPresets = PizzaPresets.getPresets();
 
+
+
+        for(Pizza pizza : pizzaPresets){
+
+            JPanel panel = new JPanel();
+            JLabel label;
+
+            label = new JLabel(pizza.getName());
+            label.setAlignmentX(Component.CENTER_ALIGNMENT);
+            panel.add(label);
+
+
+            panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+
+            panel.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
+            panel.setPreferredSize(new Dimension(150, 250));
+
+            panel.addMouseListener(new MouseAdapter() {
+                public void mouseClicked(MouseEvent e) {
+                    System.out.println("Clicked");
+                }
+            });
+            pizzaPanel.add(panel);
+        }
+        pizzaPanel.setLayout(new WrapLayout());
+
+    }
 
 }

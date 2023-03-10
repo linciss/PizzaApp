@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class PizzaPresets {
 
-    public static ArrayList<Pizza> makePresets(){
+    public static ArrayList<Pizza> getPresets(){
         ArrayList<Pizza> pizzaPresets = new ArrayList<>();
         pizzaPresets.add(new Pizza("Pepperoni", "Thin", "Tomato", "Mozzarella", "Pepperoni", 10));
         pizzaPresets.add(new Pizza("Hawaiian", "Thin", "Tomato", "Mozzarella", "Ham, Pineapple", 10));

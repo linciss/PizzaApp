@@ -60,10 +60,10 @@ public class Pizza {
     }
 
     public String toString(){
-        return "Crust: " + crust + "" +
-                "Sauce: " + sauce + "" +
-                "Cheese: " + cheese + "" +
-                "Toppings: " + top + "" +
+        return "Crust: " + crust + " " +
+                "Sauce: " + sauce + " " +
+                "Cheese: " + cheese + " " +
+                "Toppings: " + top + " " +
                 "Price: " + price;
     }
 

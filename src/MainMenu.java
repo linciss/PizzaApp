@@ -6,7 +6,6 @@ public class MainMenu extends JFrame {
         setSize(400, 600);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         add(selectionMenu);
-
         setVisible(true);
 
     }
