@@ -5,7 +5,7 @@ import java.util.Random;
 public class Pizza {
     Random rand = new Random();
     private String top, crust, sauce, cheese, name;
-    private double price, extraCrustPrice, extraSaucePrice, extraCheesePrice, extraTopPrice;
+    private double price;
 
     public Pizza(String name, String crust, String sauce, String cheese, String top, int price){
         this.name = name;
@@ -70,8 +70,18 @@ public class Pizza {
                 "Toppings: " + top + "\n" +
                 "Price: " + price;
     }
-    public double calculatePrice(){
-       return this.price += 10*rand.nextDouble();
+    public double calculateDeliveryPrice(){
+       return price += 10*rand.nextDouble();
     }
+
+    public void calculatePrice(String item){
+        switch (item) {
+            case "Sauce" ->  price += 0.50;
+            case "Cheese" -> price += 0.70;
+            case "Toppings" -> price += 1.0 ;
+        };
+
+    }
+
 
 }
