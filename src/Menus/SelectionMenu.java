@@ -103,7 +103,7 @@ public class SelectionMenu extends JPanel {
             panel.addMouseListener(new MouseAdapter() {
                 public void mouseClicked(MouseEvent e) {
                     w.getContentPane().removeAll();
-                    w.add(new ConfirmationMenu(w, SelectionMenu.this));
+                    w.add(new ConfirmationMenu(w, SelectionMenu.this, pizzaPresets.get(pizzaPanel.getComponentZOrder(panel))));
                     w.revalidate();
                 }
             });
