@@ -59,9 +59,39 @@ public class SelectionMenu extends JPanel {
             JLabel label;
             ImageIcon imageIcon;
 
+            //image
             imageIcon = new ImageIcon("src\\images\\" + pizza.getName() + ".png");
+            label = new JLabel(imageIcon);
+            label.setAlignmentX(Component.CENTER_ALIGNMENT);
+            panel.add(label);
 
+            //name
             label = new JLabel(pizza.getName());
+            label.setAlignmentX(Component.CENTER_ALIGNMENT);
+            panel.add(label);
+
+            //price
+            label = new JLabel(pizza.getPrice() + " $");
+            label.setAlignmentX(Component.CENTER_ALIGNMENT);
+            panel.add(label);
+
+            label = new JLabel("___________________");
+            label.setAlignmentX(Component.CENTER_ALIGNMENT);
+            panel.add(label);
+
+            label = new JLabel("Crust: "+pizza.getCrust());
+            label.setAlignmentX(Component.CENTER_ALIGNMENT);
+            panel.add(label);
+
+            label = new JLabel("Sauce: "+pizza.getSauce());
+            label.setAlignmentX(Component.CENTER_ALIGNMENT);
+            panel.add(label);
+
+            label = new JLabel("Cheese: "+pizza.getCheese());
+            label.setAlignmentX(Component.CENTER_ALIGNMENT);
+            panel.add(label);
+
+            label = new JLabel("Toppings: "+pizza.getTop());
             label.setAlignmentX(Component.CENTER_ALIGNMENT);
             panel.add(label);
 
