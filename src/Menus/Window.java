@@ -8,8 +8,8 @@ import javax.swing.*;
 
 public class Window extends JFrame {
     PersonInfoMenu personInfoMenu;
-
-    SelectionMenu selectionMenu = new SelectionMenu(this);
+    ConfirmationMenu confirmationMenu;
+    SelectionMenu selectionMenu = new SelectionMenu(this, confirmationMenu);
     Person person;
     LoginMenu loginMenu = new LoginMenu(this, selectionMenu);
 
@@ -19,9 +19,7 @@ public class Window extends JFrame {
 
         setTitle("Pizza Ordering App");
 
-
         setSize(300, 150);
-        //add(selectionMenu);
 
         add(loginMenu);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

@@ -14,15 +14,16 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 public class SelectionMenu extends JPanel {
-
+    ConfirmationMenu confirmationMenu;
     Window w;
+
     Person person;
-
-
-    public SelectionMenu(Window w){
-    this.w = w;
-    initPanel();
+    public SelectionMenu(Window w, ConfirmationMenu confirmationMenu){
+        this.w = w;
+        this.confirmationMenu = confirmationMenu;
+        initPanel();
     }
+
 
     public void initPanel(){
         System.out.println("Menus.SelectionMenu initialized");
@@ -71,7 +72,9 @@ public class SelectionMenu extends JPanel {
 
             panel.addMouseListener(new MouseAdapter() {
                 public void mouseClicked(MouseEvent e) {
-                    System.out.println("Clicked");
+                    w.getContentPane().removeAll();
+                    w.add(new ConfirmationMenu(w, SelectionMenu.this));
+                    w.revalidate();
                 }
             });
             pizzaPanel.add(panel);

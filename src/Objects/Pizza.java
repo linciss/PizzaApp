@@ -1,7 +1,9 @@
 package Objects;
 
-public class Pizza {
+import java.util.Random;
 
+public class Pizza {
+    Random rand = new Random();
     private String top, crust, sauce, cheese, name;
     private double price, extraCrustPrice, extraSaucePrice, extraCheesePrice, extraTopPrice;
 
@@ -67,6 +69,9 @@ public class Pizza {
                 "Cheese: " + cheese + " " +
                 "Toppings: " + top + " " +
                 "Price: " + price;
+    }
+    public double calculatePrice(){
+       return this.price += 10*rand.nextDouble();
     }
 
 }

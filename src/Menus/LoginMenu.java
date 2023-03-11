@@ -1,15 +1,13 @@
 package Menus;
 
-import Menus.SelectionMenu;
 import Objects.Person;
-import com.sun.tools.javac.Main;
 
 import javax.swing.*;
 import java.awt.*;
 
 public class LoginMenu extends JPanel{
 
-
+ConfirmationMenu ConfirmationMenu;
     Window w;
     SelectionMenu selectionMenu;
     public LoginMenu(Window w, SelectionMenu selectionMenu){
