@@ -16,6 +16,14 @@ public class Pizza {
         this.price = price;
     }
 
+
+    public double withDelivery(double distance){
+        return price += distance;
+    }
+    public double withoutDelivery(double distance){
+        return price -= distance;
+    }
+
     public String getTop() {
         return top;
     }
@@ -55,6 +63,7 @@ public class Pizza {
     public void setPrice(double price) {
         this.price = price;
     }
+
     public void setName(String name){
         this.name = name;
     }
@@ -69,9 +78,6 @@ public class Pizza {
                 "Cheese: " + cheese + "\n" +
                 "Toppings: " + top + "\n" +
                 "Price: " + price;
-    }
-    public double calculateDeliveryPrice(){
-       return price += 10*rand.nextDouble();
     }
 
     public void calculatePrice(String item){

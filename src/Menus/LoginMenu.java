@@ -1,15 +1,20 @@
 package Menus;
 
 import Objects.Person;
+import com.sun.tools.javac.Main;
 
+import javax.print.attribute.standard.PrinterMakeAndModel;
 import javax.swing.*;
 import java.awt.*;
+import java.util.Random;
 
 public class LoginMenu extends JPanel{
-
+Random rand =  new Random();
 ConfirmationMenu ConfirmationMenu;
     Window w;
-    SelectionMenu selectionMenu;
+    SelectionMenu selectionMenu = new SelectionMenu(w, ConfirmationMenu);
+    PersonInfoMenu personInfoMenu;
+     Person person;
     public LoginMenu(Window w, SelectionMenu selectionMenu){
         this.selectionMenu = selectionMenu;
         this.w = w;
@@ -47,7 +52,7 @@ ConfirmationMenu ConfirmationMenu;
         JButton loginButton = new JButton("Login");
         loginButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         loginButton.addActionListener(e -> {
-            selectionMenu.person = new Person(nameField.getText(), addressField.getText());
+            w.person= new Person(nameField.getText(), addressField.getText(), rand.nextDouble(6)+1);
             w.setSize(400, 600);
             w.getContentPane().removeAll();
             w.add(selectionMenu);
@@ -62,6 +67,11 @@ ConfirmationMenu ConfirmationMenu;
         loginPanel.add(loginButton);
         add(loginPanel);
     }
+
+    public Person getPerson(){
+        return person;
+    }
+
 }
 
 

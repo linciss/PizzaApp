@@ -11,7 +11,7 @@ public class PersonInfoMenu extends JPanel{
     SelectionMenu SelectionMenu;
 
     public PersonInfoMenu(Window w, Person person, SelectionMenu SelectionMenu){
-        this.person = person;
+        this.person = person ;
         this.w = w;
         this.SelectionMenu = SelectionMenu;
         initPanel();
@@ -28,9 +28,11 @@ public class PersonInfoMenu extends JPanel{
 
         JLabel nameLabel = new JLabel("Name: " + person.getName());
         JLabel addressLabel = new JLabel("Address: " + person.getAddress());
+        JLabel distanceLabel = new JLabel("Distance: " + person.getDistance());
 
         nameLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         addressLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        distanceLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         JButton backButt = new JButton("Back");
         backButt.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -43,6 +45,7 @@ public class PersonInfoMenu extends JPanel{
 
         personInfoPanel.add(nameLabel);
         personInfoPanel.add(addressLabel);
+        personInfoPanel.add(distanceLabel);
         personInfoPanel.add(backButt);
         add(personInfoPanel);
     }

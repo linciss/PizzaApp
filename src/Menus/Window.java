@@ -10,7 +10,7 @@ public class Window extends JFrame {
     PersonInfoMenu personInfoMenu;
     ConfirmationMenu confirmationMenu;
     SelectionMenu selectionMenu = new SelectionMenu(this, confirmationMenu);
-    Person person;
+    public Person person;
     LoginMenu loginMenu = new LoginMenu(this, selectionMenu);
 
 

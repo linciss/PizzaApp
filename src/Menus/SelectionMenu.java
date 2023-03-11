@@ -1,8 +1,8 @@
 package Menus;
 
 import Objects.Person;
-import Objects.Pizza;
 
+import Objects.Pizza;
 import Presets.PizzaPresets;
 import utils.WrapLayout;
 
@@ -16,7 +16,6 @@ import java.util.ArrayList;
 public class SelectionMenu extends JPanel {
     ConfirmationMenu confirmationMenu;
     Window w;
-
     Person person;
     public SelectionMenu(Window w, ConfirmationMenu confirmationMenu){
         this.w = w;
@@ -44,7 +43,7 @@ public class SelectionMenu extends JPanel {
         profile.addActionListener(e -> {
             w.setSize(200, 200);
             w.getContentPane().removeAll();
-            w.add(new PersonInfoMenu(w, person, this));
+            w.add(new PersonInfoMenu(w, w.person, this));
             w.revalidate();
         });
     }
