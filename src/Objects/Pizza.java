@@ -63,11 +63,11 @@ public class Pizza {
     }
 
     public String toString(){
-        return "Name: " + name + " " +
-                "Crust: " + crust + " " +
-                "Sauce: " + sauce + " " +
-                "Cheese: " + cheese + " " +
-                "Toppings: " + top + " " +
+        return "Name: " + name + "\n" +
+                "Crust: " + crust + "\n" +
+                "Sauce: " + sauce + "\n" +
+                "Cheese: " + cheese + "\n" +
+                "Toppings: " + top + "\n" +
                 "Price: " + price;
     }
     public double calculatePrice(){
