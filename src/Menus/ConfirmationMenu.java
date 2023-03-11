@@ -1,9 +1,13 @@
 package Menus;
 
 import Objects.Pizza;
+import utils.WrapLayout;
 
 import javax.swing.*;
+import javax.swing.border.LineBorder;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 public class ConfirmationMenu extends JPanel{
@@ -59,7 +63,41 @@ public class ConfirmationMenu extends JPanel{
         //adds the first panel to the main panel
         add(displayPanel);
 
+        JPanel editPanel = new JPanel();
+        //main second panel
+        editPanel.setLayout(new BoxLayout(editPanel, BoxLayout.Y_AXIS));
 
+
+
+       //cheese panel
+        editPanel.add(createPanel("Cheese"));
+        // sauce panel
+        editPanel.add(createPanel("Sauce"));
+        //toppings panel
+        editPanel.add(createPanel("Toppings"));
+
+        editPanel.setLayout(new WrapLayout());
+        add(editPanel);
 
     }
+
+    public JPanel createPanel(String item){
+        JPanel panel = new JPanel();
+        JLabel label = new JLabel(item);
+        label.setAlignmentX(Component.CENTER_ALIGNMENT);
+        panel.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent e) {
+                System.out.println(item);
+                pizza.calculatePrice(item);
+                removeAll();
+                generatePanel();
+                revalidate();
+            }
+        });
+        panel.add(label);
+        panel.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
+        panel.setPreferredSize(new Dimension(50, 100));
+        return panel;
+    }
+
 }
