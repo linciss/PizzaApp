@@ -1,47 +1,65 @@
 package Menus;
 
+import Objects.Pizza;
+
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 
 public class ConfirmationMenu extends JPanel{
     Window w;
     SelectionMenu SelectionMenu;
-    public ConfirmationMenu(Window w, SelectionMenu SelectionMenu){
-              this.SelectionMenu = SelectionMenu;
-           this.w = w;
-              initPanel();
+
+    Pizza pizza;
+    public ConfirmationMenu(Window w, SelectionMenu SelectionMenu, Pizza pizza){
+        this.SelectionMenu = SelectionMenu;
+        this.pizza = pizza;
+        this.w = w;
+        initPanel();
     }
     public void initPanel(){
         generatePanel();
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
     }
 
-    public void generatePanel(){
-        JPanel confirmationPanel = new JPanel();
-        confirmationPanel.setLayout(new BoxLayout(confirmationPanel, BoxLayout.Y_AXIS));
+    public void generatePanel() {
+        JPanel displayPanel = new JPanel();
+        displayPanel.setLayout(new BoxLayout(displayPanel, BoxLayout.Y_AXIS));
+        JLabel label;
 
-        JLabel confirmationLabel = new JLabel("Are you sure you want to exit?");
-        confirmationLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        ImageIcon imageIcon = new ImageIcon("src\\images\\" + pizza.getName() + ".png");
+        label = new JLabel(imageIcon);
+        label.setAlignmentX(Component.CENTER_ALIGNMENT);
+        displayPanel.add(label);
 
-        JButton yesButt = new JButton("Yes");
-        yesButt.setAlignmentX(Component.CENTER_ALIGNMENT);
-        yesButt.addActionListener(e -> {
-            System.exit(0);
-        });
+        label = new JLabel("Basic info");
+        label.setAlignmentX(Component.CENTER_ALIGNMENT);
+        displayPanel.add(label);
 
+        label = new JLabel("Name: " + pizza.getName()+ ", Sauce: " + pizza.getSauce() + ", Cheese: " + pizza.getCheese());
+        label.setAlignmentX(Component.CENTER_ALIGNMENT);
+        displayPanel.add(label);
+
+        label = new JLabel("Toppings: " + pizza.getTop());
+        label.setAlignmentX(Component.CENTER_ALIGNMENT);
+        displayPanel.add(label);
+
+        //back button for now
         JButton noButt = new JButton("No");
         noButt.setAlignmentX(Component.CENTER_ALIGNMENT);
         noButt.addActionListener(e -> {
+            w.setSize(400, 600);
             w.getContentPane().removeAll();
             w.add(new SelectionMenu(w, this));
             w.revalidate();
         });
 
-        confirmationPanel.add(confirmationLabel);
-        confirmationPanel.add(yesButt);
-        confirmationPanel.add(noButt);
-        add(confirmationPanel);
+        displayPanel.add(noButt);
+
+        //adds the first panel to the main panel
+        add(displayPanel);
+
+
+
     }
-
-
 }
