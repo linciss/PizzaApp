@@ -23,6 +23,7 @@ public class Window extends JFrame {
 
         add(loginMenu);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setResizable(false);
         setVisible(true);
 
     }

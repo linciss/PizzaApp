@@ -33,6 +33,26 @@ public class ConfirmationMenu extends JPanel{
     }
 
     public void generatePanel() {
+
+        //back button
+        JPanel backPanel = new JPanel(new BorderLayout());
+        JButton backButt = new JButton("Back");
+
+        //backButt.setAlignmentX(Component.CENTER_ALIGNMENT);
+        backButt.addActionListener(e -> {
+            w.setSize(400, 600);
+            w.getContentPane().removeAll();
+            w.add(new SelectionMenu(w, this));
+            w.revalidate();
+        });
+
+        backPanel.add(backButt, BorderLayout.WEST);
+        backPanel.setMaximumSize(new Dimension(400, 20));
+        add(backPanel);
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        //display panel displaying the pizza
         JPanel displayPanel = new JPanel();
         displayPanel.setLayout(new BoxLayout(displayPanel, BoxLayout.Y_AXIS));
         JLabel label;
@@ -42,11 +62,15 @@ public class ConfirmationMenu extends JPanel{
         label.setAlignmentX(Component.CENTER_ALIGNMENT);
         displayPanel.add(label);
 
+        label = new JLabel(pizza.getName());
+        label.setAlignmentX(Component.CENTER_ALIGNMENT);
+        displayPanel.add(label);
+
         label = new JLabel("Basic info");
         label.setAlignmentX(Component.CENTER_ALIGNMENT);
         displayPanel.add(label);
 
-        label = new JLabel("Name: " + pizza.getName()+ ", Sauce: " + pizza.getSauce() + ", Cheese: " + pizza.getCheese());
+        label = new JLabel("Sauce: " + pizza.getSauce() + ", Cheese: " + pizza.getCheese());
         label.setAlignmentX(Component.CENTER_ALIGNMENT);
         displayPanel.add(label);
 
@@ -54,25 +78,16 @@ public class ConfirmationMenu extends JPanel{
         label.setAlignmentX(Component.CENTER_ALIGNMENT);
         displayPanel.add(label);
 
-        //back button for now
-        JButton noButt = new JButton("No");
-        noButt.setAlignmentX(Component.CENTER_ALIGNMENT);
-        noButt.addActionListener(e -> {
-            w.setSize(400, 600);
-            w.getContentPane().removeAll();
-            w.add(new SelectionMenu(w, this));
-            w.revalidate();
-        });
-
-        displayPanel.add(noButt);
 
         //adds the first panel to the main panel
         add(displayPanel);
 
-        JPanel editPanel = new JPanel();
-        //main second panel
-        editPanel.setLayout(new BoxLayout(editPanel, BoxLayout.Y_AXIS));
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+        //main second panel
+        JPanel editPanel = new JPanel();
+
+        editPanel.setLayout(new WrapLayout());
         //cheese panel
         editPanel.add(createPanel("Cheese"));
         // sauce panel
@@ -80,18 +95,15 @@ public class ConfirmationMenu extends JPanel{
         //toppings panel
         editPanel.add(createPanel("Toppings"));
 
-        editPanel.setLayout(new WrapLayout());
-
+        //radio buttons
         onTheSpot = new JRadioButton("On the spot");
         delivery = new JRadioButton("Delivery");
         ButtonGroup group = new ButtonGroup();
-
 
         group.add(delivery);
         group.add(onTheSpot);
         //set to tru on default
         onTheSpot.setSelected(true);
-
 
         //if pressed change the price of the pizza
         if(!isOnTheSpot){
@@ -103,6 +115,7 @@ public class ConfirmationMenu extends JPanel{
                 refresh();
                 onTheSpot.setSelected(true);
                 delivery.setSelected(false);
+                //debugging
                 System.out.println("isonthespot in onthespot "+isOnTheSpot);
                 System.out.println("isdelivery in onthespot "+isDelivery);
             });}
@@ -117,6 +130,7 @@ public class ConfirmationMenu extends JPanel{
                 refresh();
                 onTheSpot.setSelected(false);
                 delivery.setSelected(true);
+                //debugging
                 System.out.println("isonthespot in delivery"+isOnTheSpot);
                 System.out.println("isdelivery in delivery"+isDelivery);
             });
@@ -125,6 +139,15 @@ public class ConfirmationMenu extends JPanel{
         editPanel.add(onTheSpot);
         editPanel.add(delivery);
         System.out.println(pizza.getPrice());
+        editPanel.setMaximumSize(new Dimension(400, 250));
+
+        add(editPanel);
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        JPanel buyPanel = new JPanel();
+        buyPanel.setLayout(new BoxLayout(buyPanel, BoxLayout.Y_AXIS));
+
 
         //slider
         slider = new JSlider(1, 10);
@@ -137,7 +160,7 @@ public class ConfirmationMenu extends JPanel{
             repaint();
         });
 
-        editPanel.add(slider);
+        buyPanel.add(slider);
         //buy button
         buyButt = new JButton("Buy for " + pizza.getPrice() + "€");
         buyButt.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -145,9 +168,10 @@ public class ConfirmationMenu extends JPanel{
             JOptionPane.showMessageDialog(null, "Your order has been placed!");
         });
 
-        editPanel.add(buyButt);
+        buyPanel.add(buyButt);
 
         add(editPanel);
+        add(buyPanel)  ;
 
     }
 

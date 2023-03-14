@@ -52,7 +52,7 @@ ConfirmationMenu ConfirmationMenu;
         JButton loginButton = new JButton("Login");
         loginButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         loginButton.addActionListener(e -> {
-            w.person= new Person(nameField.getText(), addressField.getText(), rand.nextDouble()+7);
+            w.person= new Person(nameField.getText(), addressField.getText(), (rand.nextDouble()) *10 );
             w.setSize(400, 600);
             w.getContentPane().removeAll();
             w.add(selectionMenu);
