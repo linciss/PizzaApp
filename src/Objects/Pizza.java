@@ -82,9 +82,9 @@ public class Pizza {
 
     public void calculatePrice(String item){
         switch (item) {
-            case "Sauce" ->  price += 0.50;
-            case "Cheese" -> price += 0.70;
-            case "Toppings" -> price += 1.0 ;
+            case "Sauce":  price += 0.50;
+            case "Cheese": price += 0.70;
+            case "Toppings": price += 1.0 ;
         };
 
     }

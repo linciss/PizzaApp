@@ -2,7 +2,6 @@ package Menus;
 
 import Objects.Pizza;
 import utils.WrapLayout;
-
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 import java.awt.*;
@@ -15,6 +14,7 @@ public class ConfirmationMenu extends JPanel{
 
     Pizza pizza;
     JRadioButton onTheSpot, delivery;
+    JSlider slider;
     boolean isOnTheSpot = true;
     boolean isDelivery = false;
     public ConfirmationMenu(Window w, SelectionMenu SelectionMenu, Pizza pizza){
@@ -124,6 +124,10 @@ public class ConfirmationMenu extends JPanel{
         label = new JLabel("Price: "+ pizza.getPrice());
         label.setAlignmentX(Component.CENTER_ALIGNMENT);
         editPanel.add(label);
+
+
+
+
         add(editPanel);
     }
 

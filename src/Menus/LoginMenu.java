@@ -1,7 +1,7 @@
 package Menus;
 
 import Objects.Person;
-import com.sun.tools.javac.Main;
+
 
 import javax.print.attribute.standard.PrinterMakeAndModel;
 import javax.swing.*;
@@ -52,7 +52,7 @@ ConfirmationMenu ConfirmationMenu;
         JButton loginButton = new JButton("Login");
         loginButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         loginButton.addActionListener(e -> {
-            w.person= new Person(nameField.getText(), addressField.getText(), rand.nextDouble(6)+1);
+            w.person= new Person(nameField.getText(), addressField.getText(), rand.nextDouble()+7);
             w.setSize(400, 600);
             w.getContentPane().removeAll();
             w.add(selectionMenu);
@@ -67,12 +67,8 @@ ConfirmationMenu ConfirmationMenu;
         loginPanel.add(loginButton);
         add(loginPanel);
     }
-
-    public Person getPerson(){
-        return person;
-    }
-
 }
+
 
 
 
