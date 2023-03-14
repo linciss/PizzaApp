@@ -14,7 +14,11 @@ public class ConfirmationMenu extends JPanel{
 
     Pizza pizza;
     JRadioButton onTheSpot, delivery;
+
     JSlider slider;
+
+    JButton buyButt;
+
     boolean isOnTheSpot = true;
     boolean isDelivery = false;
     public ConfirmationMenu(Window w, SelectionMenu SelectionMenu, Pizza pizza){
@@ -121,14 +125,30 @@ public class ConfirmationMenu extends JPanel{
         editPanel.add(onTheSpot);
         editPanel.add(delivery);
         System.out.println(pizza.getPrice());
-        label = new JLabel("Price: "+ pizza.getPrice());
-        label.setAlignmentX(Component.CENTER_ALIGNMENT);
-        editPanel.add(label);
 
+        //slider
+        slider = new JSlider(1, 10);
+        slider.setValue(1);
+        slider.setMajorTickSpacing(1);
+        slider.setPaintLabels(true);
+        slider.setAlignmentX(Component.CENTER_ALIGNMENT);
+        slider.addChangeListener(e -> {
+            buyButt.setText("Buy for " + pizza.getPrice()* slider.getValue() + "€");
+            repaint();
+        });
 
+        editPanel.add(slider);
+        //buy button
+        buyButt = new JButton("Buy for " + pizza.getPrice() + "€");
+        buyButt.setAlignmentX(Component.CENTER_ALIGNMENT);
+        buyButt.addActionListener(e -> {
+            JOptionPane.showMessageDialog(null, "Your order has been placed!");
+        });
 
+        editPanel.add(buyButt);
 
         add(editPanel);
+
     }
 
     public JPanel createPanel(String item){
