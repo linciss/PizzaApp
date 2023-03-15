@@ -45,6 +45,13 @@ public class SelectionMenu extends JPanel {
             w.add(new PersonInfoMenu(w, w.person, this));
             w.revalidate();
         });
+
+        logout.addActionListener(e -> {
+            w.getContentPane().removeAll();
+            w.add(new LoginMenu(w, this));
+            w.revalidate();
+        });
+
     }
     JPanel pizzaPanel = new JPanel();
 
