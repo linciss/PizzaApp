@@ -5,9 +5,9 @@ import java.util.Random;
 public class Pizza {
     Random rand = new Random();
     private String top, crust, sauce, cheese, name;
-    private double price;
+    private float price;
 
-    public Pizza(String name, String crust, String sauce, String cheese, String top, int price){
+    public Pizza(String name, String crust, String sauce, String cheese, String top, float price){
         this.name = name;
         this.crust = crust;
         this.sauce = sauce;
@@ -17,10 +17,10 @@ public class Pizza {
     }
 
 
-    public double withDelivery(double distance){
+    public float withDelivery(double distance){
         return price += distance;
     }
-    public double withoutDelivery(double distance){
+    public float withoutDelivery(double distance){
         return price -= distance;
     }
 
@@ -56,11 +56,11 @@ public class Pizza {
         this.cheese = cheese;
     }
 
-    public double getPrice() {
+    public float getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(float price) {
         this.price = price;
     }
 
@@ -82,11 +82,11 @@ public class Pizza {
 
     public void calculatePrice(String item){
         switch (item) {
-            case "Sauce":  price += 0.50;
-            case "Cheese": price += 0.70;
-            case "Toppings": price += 1.0 ;
-        };
+            case "Sauce":  price += 0.5;break;
+            case "Cheese": price += 0.75; break;
+            case "Toppings": price += 1.0; break;
 
+        };
     }
 
 

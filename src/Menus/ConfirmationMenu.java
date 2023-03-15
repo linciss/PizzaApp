@@ -18,6 +18,7 @@ public class ConfirmationMenu extends JPanel{
     JSlider slider;
 
     JButton buyButt;
+    JPanel buyPanel;
 
     boolean isOnTheSpot = true;
     boolean isDelivery = false;
@@ -88,12 +89,14 @@ public class ConfirmationMenu extends JPanel{
         JPanel editPanel = new JPanel();
 
         editPanel.setLayout(new WrapLayout());
-        //cheese panel
-        editPanel.add(createPanel("Cheese"));
+
         // sauce panel
         editPanel.add(createPanel("Sauce"));
+        //cheese panel
+        editPanel.add(createPanel("Cheese"));
         //toppings panel
         editPanel.add(createPanel("Toppings"));
+
 
         //radio buttons
         onTheSpot = new JRadioButton("On the spot");
@@ -145,7 +148,7 @@ public class ConfirmationMenu extends JPanel{
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        JPanel buyPanel = new JPanel();
+        buyPanel = new JPanel();
         buyPanel.setLayout(new BoxLayout(buyPanel, BoxLayout.Y_AXIS));
 
 
@@ -167,7 +170,8 @@ public class ConfirmationMenu extends JPanel{
         buyButt.addActionListener(e -> {
             JOptionPane.showMessageDialog(null, "Your order has been placed!");
         });
-
+        System.out.println("Buy butt" + buyButt.getHeight());
+        buyButt.setMaximumSize(new Dimension(300, 25));
         buyPanel.add(buyButt);
 
         add(editPanel);
@@ -181,8 +185,8 @@ public class ConfirmationMenu extends JPanel{
         label.setAlignmentX(Component.CENTER_ALIGNMENT);
         panel.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
-                System.out.println(item);
                 pizza.calculatePrice(item);
+                System.out.println("price wtf "+pizza.getPrice());
                 refresh();
             }
         });
