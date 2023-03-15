@@ -35,13 +35,13 @@ public class ConfirmationMenu extends JPanel{
 
     public void generatePanel() {
 
+/////////////////////////////////////////////////BACKPANEL////////////////////////////////////////////////////////
         //back button
         JPanel backPanel = new JPanel(new BorderLayout());
         JButton backButt = new JButton("Back");
 
         //backButt.setAlignmentX(Component.CENTER_ALIGNMENT);
         backButt.addActionListener(e -> {
-            w.setSize(400, 600);
             w.getContentPane().removeAll();
             w.add(new SelectionMenu(w, this));
             w.revalidate();
@@ -51,7 +51,7 @@ public class ConfirmationMenu extends JPanel{
         backPanel.setMaximumSize(new Dimension(400, 20));
         add(backPanel);
 
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////DISPLAYPANEL////////////////////////////////////////////////////////////////////////////////////////
 
         //display panel displaying the pizza
         JPanel displayPanel = new JPanel();
@@ -83,7 +83,7 @@ public class ConfirmationMenu extends JPanel{
         //adds the first panel to the main panel
         add(displayPanel);
 
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////EDITPANEL////////////////////////////////////////////////////////////////////////////////////////
 
         //main second panel
         JPanel editPanel = new JPanel();
@@ -153,7 +153,7 @@ public class ConfirmationMenu extends JPanel{
 
         add(editPanel);
 
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////BUYPANEL///////////////////////////////////////////////////////////////////////////////////
 
         buyPanel = new JPanel();
         buyPanel.setLayout(new BoxLayout(buyPanel, BoxLayout.Y_AXIS));
@@ -193,7 +193,6 @@ public class ConfirmationMenu extends JPanel{
         panel.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
                 pizza.setPrice(pizza.calculatePrice(item)+pizza.getPrice());
-                System.out.println("price wtf "+pizza.getPrice());
                 refreshButton();
             }
         });
@@ -202,11 +201,7 @@ public class ConfirmationMenu extends JPanel{
         panel.setPreferredSize(new Dimension(100, 200));
         return panel;
     }
-    public void refresh(){
-        removeAll();
-        generatePanel();
-        revalidate();
-    }
+
     public void refreshButton(){
         buyButt.setText("Buy for " + pizza.getPrice() * slider.getValue() + "€");
     }

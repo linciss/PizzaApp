@@ -19,7 +19,7 @@ public class Window extends JFrame {
 
         setTitle("Pizza Ordering App");
 
-        setSize(300, 150);
+        setSize(400, 600);
 
         add(loginMenu);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

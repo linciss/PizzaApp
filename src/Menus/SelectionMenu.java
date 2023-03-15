@@ -41,7 +41,6 @@ public class SelectionMenu extends JPanel {
         add(menubar, BorderLayout.NORTH);
 
         profile.addActionListener(e -> {
-            w.setSize(200, 200);
             w.getContentPane().removeAll();
             w.add(new PersonInfoMenu(w, w.person, this));
             w.revalidate();
