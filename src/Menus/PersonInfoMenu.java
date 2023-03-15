@@ -38,10 +38,9 @@ public class PersonInfoMenu extends JPanel{
         JButton backButt = new JButton("Back");
         backButt.setAlignmentX(Component.CENTER_ALIGNMENT);
         backButt.addActionListener(e -> {
-            w.setSize(400, 600);
             w.getContentPane().removeAll();
             w.add(SelectionMenu);
-            w.revalidate();
+            w.repaint();
         });
 
         personInfoPanel.add(nameLabel);

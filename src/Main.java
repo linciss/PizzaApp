@@ -17,11 +17,8 @@ public class Main {
     }
 
   /* Todo:
-  * 1. Finish the profile menu and logout button
-  * 2. Finish the confirmation menu
+  * 1. FInish logout button
   * 3 Maybe add a order history in the profile menu
-  * 4. Maybe make a prefrences
-  * 5. make a brach for sizes
     */
 
 
