@@ -19,6 +19,7 @@ ConfirmationMenu ConfirmationMenu;
     public LoginMenu(Window w, SelectionMenu selectionMenu){
         this.selectionMenu = selectionMenu;
         this.w = w;
+        setBackground(new Color(18,18,18));
         initPanel();
     }
 
@@ -27,9 +28,14 @@ ConfirmationMenu ConfirmationMenu;
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
     }
 
+    // panel.setBackground(new Color(18,18,18));
+    // label.setForeground(new Color(187, 134, 252));
+    // subpanel.setBackground(new Color(38, 37, 37));
+
     public void generatePanel(){
         JPanel imagePanel = new JPanel();
         imagePanel.setLayout(new WrapLayout());
+        imagePanel.setBackground(new Color(18, 18, 18));
         ImageIcon image = new ImageIcon("src\\Images\\LoginIcon.png");
         imagePanel.setMaximumSize(new Dimension(400, 250));
         imagePanel.add(new JLabel(image));
@@ -37,6 +43,8 @@ ConfirmationMenu ConfirmationMenu;
 
         JPanel loginPanel = new JPanel();
         loginPanel.setLayout(new BoxLayout(loginPanel, BoxLayout.Y_AXIS));
+        loginPanel.setMaximumSize(new Dimension(400, 350));
+        loginPanel.setBackground(new Color(18, 18, 18));
 
         JLabel nameLabel = new JLabel("Name");
         JLabel addressLabel = new JLabel("Address");
@@ -45,17 +53,23 @@ ConfirmationMenu ConfirmationMenu;
 
         nameLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         addressLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        nameLabel.setForeground(new Color(187, 134, 252));
+        addressLabel.setForeground(new Color(187, 134, 252));
 
         //sets layout for the nameField to be horizontal
-        nameField.setMaximumSize(new Dimension(200, 20));
-
+        nameField.setMaximumSize(new Dimension(200, 30));
+        nameField.setBackground(new Color(38, 37, 37));
+        nameField.setForeground(new Color(187, 134, 252));
 
         // sets layout for the addressField to be horizontal
-        addressField.setMaximumSize(new Dimension(200, 20));
-
+        addressField.setMaximumSize(new Dimension(200, 30));
+        addressField.setBackground(new Color(38, 37, 37));
+        addressField.setForeground(new Color(187, 134, 252));
         //login button to login, when pressed show the selection menu
         JButton loginButton= new JButton("Login");
         loginButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        loginButton.setBackground(new Color(38, 37, 37));
+        loginButton.setForeground(new Color(187, 134, 252));
 
         loginButton.addActionListener(e -> {
             if(!nameField.getText().equals("") && !addressField.getText().equals("")){

@@ -20,7 +20,9 @@ public class SelectionMenu extends JPanel {
     public SelectionMenu(Window w, ConfirmationMenu confirmationMenu){
         this.w = w;
         this.confirmationMenu = confirmationMenu;
+        setBackground(new Color(18,18,18));
         initPanel();
+
     }
 
 
@@ -34,10 +36,20 @@ public class SelectionMenu extends JPanel {
 
         JMenuBar menubar = new JMenuBar();
         JMenu menu = new JMenu("Profile");
+
         JMenuItem logout= new JMenuItem("Logout");
         JMenuItem profile = new JMenuItem("Profile");
+        logout.setForeground(new Color(187, 134, 252));
+        profile.setForeground(new Color(187, 134, 252));
+
         menu.add(profile);menu.add(logout);
+
+        menu.setForeground(Color.blue);
+        menu.setBackground(new Color(18, 18, 18));
+
         menubar.add(menu);
+        menubar.setBackground(new Color(18,18,18));
+        menubar.setForeground(new Color(187, 134, 252));
         add(menubar, BorderLayout.NORTH);
 
         profile.addActionListener(e -> {
@@ -73,31 +85,40 @@ public class SelectionMenu extends JPanel {
             //name
             label = new JLabel(pizza.getName());
             label.setAlignmentX(Component.CENTER_ALIGNMENT);
+            label.setFont(new Font(label.getFont().getFontName(), Font.BOLD, 13));
+            label.setForeground(new Color(187, 134, 252));
             panel.add(label);
 
             //price
             label = new JLabel(pizza.getPrice() + " $");
             label.setAlignmentX(Component.CENTER_ALIGNMENT);
+            label.setFont(new Font(label.getFont().getFontName(), Font.BOLD, 13));
+            label.setForeground(new Color(187, 134, 252));
             panel.add(label);
-
-            label = new JLabel("___________________");
+                                   //__________________________
+            label = new JLabel("-------------------------");
             label.setAlignmentX(Component.CENTER_ALIGNMENT);
+            label.setForeground(new Color(187, 134, 252));
             panel.add(label);
 
             label = new JLabel("Crust: "+pizza.getCrust());
             label.setAlignmentX(Component.CENTER_ALIGNMENT);
+            label.setForeground(new Color(187, 134, 252));
             panel.add(label);
 
             label = new JLabel("Sauce: "+pizza.getSauce());
             label.setAlignmentX(Component.CENTER_ALIGNMENT);
+            label.setForeground(new Color(187, 134, 252));
             panel.add(label);
 
             label = new JLabel("Cheese: "+pizza.getCheese());
             label.setAlignmentX(Component.CENTER_ALIGNMENT);
+            label.setForeground(new Color(187, 134, 252));
             panel.add(label);
 
             label = new JLabel("Toppings: "+pizza.getTop());
             label.setAlignmentX(Component.CENTER_ALIGNMENT);
+            label.setForeground(new Color(187, 134, 252));
             panel.add(label);
 
             panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
@@ -112,8 +133,10 @@ public class SelectionMenu extends JPanel {
                     w.revalidate();
                 }
             });
+            panel.setBackground(new Color(38, 37, 37));
             pizzaPanel.add(panel);
         }
         pizzaPanel.setLayout(new WrapLayout());
+        pizzaPanel.setBackground(new Color(18,18,18));
     }
 }

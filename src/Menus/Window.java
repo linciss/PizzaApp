@@ -3,9 +3,8 @@ package Menus;
 import Menus.LoginMenu;
 import Menus.SelectionMenu;
 import Objects.Person;
-import com.formdev.flatlaf.FlatDarculaLaf;
-import com.formdev.flatlaf.FlatDarkLaf;
-import com.formdev.flatlaf.FlatIntelliJLaf;
+import com.formdev.flatlaf.*;
+import com.formdev.flatlaf.themes.FlatMacLightLaf;
 
 import javax.swing.*;
 import java.awt.*;
@@ -22,13 +21,8 @@ public class Window extends JFrame {
     public Window(){
 
         setTitle("Pizza Ordering App");
-        setForeground(Color.DARK_GRAY);
         setSize(400, 600);
-        try {
-            UIManager.setLookAndFeel(new FlatIntelliJLaf());
-        }catch (Exception e){
-            e.printStackTrace();
-        }
+
         add(loginMenu);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);

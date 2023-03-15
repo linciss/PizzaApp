@@ -27,20 +27,26 @@ public class ConfirmationMenu extends JPanel{
         this.SelectionMenu = SelectionMenu;
         this.pizza = pizza;
         this.w = w;
+        setBackground(new Color(18,18,18));
         initPanel();
     }
     public void initPanel(){
         generatePanel();
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
     }
+    // panel.setBackground(new Color(18,18,18));
+    // label.setForeground(new Color(187, 134, 252));
+    // subpanel.setBackground(new Color(38, 37, 37));
 
     public void generatePanel() {
 
 /////////////////////////////////////////////////BACKPANEL////////////////////////////////////////////////////////
         //back button
         JPanel backPanel = new JPanel(new BorderLayout());
+        backPanel.setBackground(new Color(18, 18, 18));
         JButton backButt = new JButton("Back");
-
+        backButt.setBackground(new Color(38, 37, 37));
+        backButt.setForeground(new Color(187, 134, 252));
         //backButt.setAlignmentX(Component.CENTER_ALIGNMENT);
         backButt.addActionListener(e -> {
             w.getContentPane().removeAll();
@@ -66,20 +72,24 @@ public class ConfirmationMenu extends JPanel{
 
         label = new JLabel(pizza.getName());
         label.setAlignmentX(Component.CENTER_ALIGNMENT);
+        label.setForeground(new Color(187, 134, 252));
         displayPanel.add(label);
 
         label = new JLabel("Basic info");
         label.setAlignmentX(Component.CENTER_ALIGNMENT);
+        label.setForeground(new Color(187, 134, 252));
         displayPanel.add(label);
 
         label = new JLabel("Sauce: " + pizza.getSauce() + ", Cheese: " + pizza.getCheese());
         label.setAlignmentX(Component.CENTER_ALIGNMENT);
+        label.setForeground(new Color(187, 134, 252));
         displayPanel.add(label);
 
         label = new JLabel("Toppings: " + pizza.getTop());
         label.setAlignmentX(Component.CENTER_ALIGNMENT);
+        label.setForeground(new Color(187, 134, 252));
         displayPanel.add(label);
-
+        displayPanel.setBackground(new Color(18, 18, 18));
 
         //adds the first panel to the main panel
         add(displayPanel);
@@ -106,9 +116,11 @@ public class ConfirmationMenu extends JPanel{
 
         group.add(delivery);
         group.add(onTheSpot);
+
         //set to true on default
         onTheSpot.setSelected(true);
-
+        onTheSpot.setForeground(new Color(187, 134, 252));
+        delivery.setForeground(new Color(187, 134, 252));
         //if pressed change the price of the pizza
 
             onTheSpot.addActionListener(e -> {
@@ -151,20 +163,21 @@ public class ConfirmationMenu extends JPanel{
         editPanel.add(delivery);
         System.out.println(pizza.getPrice());
         editPanel.setMaximumSize(new Dimension(400, 250));
-
+        editPanel.setBackground(new Color(18, 18, 18));
         add(editPanel);
 
 ////////////////////////////////////////////////////BUYPANEL///////////////////////////////////////////////////////////////////////////////////
 
         buyPanel = new JPanel();
         buyPanel.setLayout(new BoxLayout(buyPanel, BoxLayout.Y_AXIS));
-
+        buyPanel.setMaximumSize(new Dimension(400, 250));
 
         //slider
         slider = new JSlider(1, 10);
         slider.setValue(1);
         slider.setMajorTickSpacing(1);
         slider.setPaintLabels(true);
+        slider.setForeground(new Color(187, 134, 252));
         slider.setAlignmentX(Component.CENTER_ALIGNMENT);
         slider.addChangeListener(e -> {
             refreshButton();
@@ -175,12 +188,17 @@ public class ConfirmationMenu extends JPanel{
         //buy button
         buyButt = new JButton("Buy for " + pizza.getPrice() + "€");
         buyButt.setAlignmentX(Component.CENTER_ALIGNMENT);
+        buyButt.setFont(new Font("Arial", Font.BOLD, 20));
         buyButt.addActionListener(e -> {
             JOptionPane.showMessageDialog(null, "Your order has been placed!");
         });
         System.out.println("Buy butt" + buyButt.getHeight());
-        buyButt.setMaximumSize(new Dimension(300, 25));
+        buyButt.setMaximumSize(new Dimension(300, 30));
+        buyButt.setBackground(new Color(38, 37, 37));
+        buyButt.setForeground(new Color(187, 134, 252));
         buyPanel.add(buyButt);
+
+        buyPanel.setBackground(new Color(18, 18, 18));
 
         add(editPanel);
         add(buyPanel)  ;
