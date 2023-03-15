@@ -13,8 +13,9 @@ public class LoginMenu extends JPanel{
 Random rand =  new Random();
 ConfirmationMenu ConfirmationMenu;
     Window w;
-    SelectionMenu selectionMenu = new SelectionMenu(w, ConfirmationMenu);
     PersonInfoMenu personInfoMenu;
+    SelectionMenu selectionMenu = new SelectionMenu(w, ConfirmationMenu);
+
      Person person;
     public LoginMenu(Window w, SelectionMenu selectionMenu){
         this.selectionMenu = selectionMenu;

@@ -1,5 +1,6 @@
 package Menus;
 
+import Objects.Log;
 import Objects.Pizza;
 import utils.WrapLayout;
 import javax.swing.*;
@@ -8,9 +9,15 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.HashMap;
+
+
 
 public class ConfirmationMenu extends JPanel{
     Window w;
+    Log log;
+
     SelectionMenu SelectionMenu;
 
     Pizza pizza;
@@ -21,11 +28,13 @@ public class ConfirmationMenu extends JPanel{
     JButton buyButt;
     JPanel buyPanel;
 
+    ArrayList<Log> orderHistory  = new ArrayList<>();
     boolean isOnTheSpot = true;
     boolean isDelivery = true;
     public ConfirmationMenu(Window w, SelectionMenu SelectionMenu, Pizza pizza){
         this.SelectionMenu = SelectionMenu;
         this.pizza = pizza;
+
         this.w = w;
         setBackground(new Color(18,18,18));
         initPanel();
@@ -189,9 +198,16 @@ public class ConfirmationMenu extends JPanel{
         buyButt = new JButton("Buy for " + pizza.getPrice() + "€");
         buyButt.setAlignmentX(Component.CENTER_ALIGNMENT);
         buyButt.setFont(new Font("Arial", Font.BOLD, 20));
+
         buyButt.addActionListener(e -> {
-            JOptionPane.showMessageDialog(null, "Your order has been placed!");
+            JOptionPane.showMessageDialog(this, "Your order has been placed!");
+            log = new Log(pizza.getName(), slider.getValue());
+            w.orderHistory.add(log);
+            refresh();
         });
+        System.out.println("orderhist debugg" + w.orderHistory.size());
+
+
         System.out.println("Buy butt" + buyButt.getHeight());
         buyButt.setMaximumSize(new Dimension(300, 30));
         buyButt.setBackground(new Color(38, 37, 37));
@@ -221,6 +237,12 @@ public class ConfirmationMenu extends JPanel{
         return panel;
     }
 
+    public void refresh(){
+            removeAll();
+            generatePanel();
+            revalidate();
+        //System.out.println(map.size() + " Debug map" );
+    }
     public void refreshButton(){
         DecimalFormat df = new DecimalFormat(".##");
         //float price = pizza.getPrice() * slider.getValue() ;
