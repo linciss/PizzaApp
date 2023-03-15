@@ -21,7 +21,7 @@ public class ConfirmationMenu extends JPanel{
     JPanel buyPanel;
 
     boolean isOnTheSpot = true;
-    boolean isDelivery = false;
+    boolean isDelivery = true;
     public ConfirmationMenu(Window w, SelectionMenu SelectionMenu, Pizza pizza){
         this.SelectionMenu = SelectionMenu;
         this.pizza = pizza;
@@ -105,39 +105,46 @@ public class ConfirmationMenu extends JPanel{
 
         group.add(delivery);
         group.add(onTheSpot);
-        //set to tru on default
+        //set to true on default
         onTheSpot.setSelected(true);
 
         //if pressed change the price of the pizza
-        if(!isOnTheSpot){
+
             onTheSpot.addActionListener(e -> {
-                System.out.println("On the spot!");
-                pizza.setPrice(pizza.withoutDelivery(w.person.getDistance()));
-                isOnTheSpot = true;
-                isDelivery = false;
-                refresh();
-                onTheSpot.setSelected(true);
-                delivery.setSelected(false);
-                //debugging
-                System.out.println("isonthespot in onthespot "+isOnTheSpot);
-                System.out.println("isdelivery in onthespot "+isDelivery);
-            });}
+                if(isOnTheSpot) {
+                    System.out.println("On the spot!");
+                    if(pizza.getPrice()!=10) {
+                        pizza.setPrice(pizza.withoutDelivery(w.person.getDistance()));
+                    }
+                    refreshButton();
+                    System.out.println("Debbuging for price: " + pizza.getPrice());
+                    isDelivery = true;
+                    isOnTheSpot = false;
+                    onTheSpot.setSelected(true);
+                    delivery.setSelected(false);
+                    //debugging
+                    System.out.println("isonthespot in onthespot " + isOnTheSpot);
+                    System.out.println("isdelivery in onthespot " + isDelivery);
+                }
+            });
 
         //if pressed change the price of the pizza
-        if(!isDelivery) {
+
             delivery.addActionListener(e -> {
-                System.out.println("Delivery!");
-                pizza.setPrice(pizza.withDelivery(w.person.getDistance()));
-                isOnTheSpot = false;
-                isDelivery = true;
-                refresh();
-                onTheSpot.setSelected(false);
-                delivery.setSelected(true);
-                //debugging
-                System.out.println("isonthespot in delivery"+isOnTheSpot);
-                System.out.println("isdelivery in delivery"+isDelivery);
+                if(isDelivery) {
+                    System.out.println("Delivery!");
+                    pizza.setPrice(pizza.withDelivery(w.person.getDistance()));
+                    isOnTheSpot = true;
+                    isDelivery = false;
+                    refreshButton();
+                    onTheSpot.setSelected(false);
+                    delivery.setSelected(true);
+                    //debugging
+                    System.out.println("isonthespot in delivery"+isOnTheSpot);
+                    System.out.println("isdelivery in delivery"+isDelivery);
+                }
             });
-        }
+
 
         editPanel.add(onTheSpot);
         editPanel.add(delivery);
@@ -159,7 +166,7 @@ public class ConfirmationMenu extends JPanel{
         slider.setPaintLabels(true);
         slider.setAlignmentX(Component.CENTER_ALIGNMENT);
         slider.addChangeListener(e -> {
-            buyButt.setText("Buy for " + pizza.getPrice()* slider.getValue() + "€");
+            refreshButton();
             repaint();
         });
 
@@ -185,9 +192,9 @@ public class ConfirmationMenu extends JPanel{
         label.setAlignmentX(Component.CENTER_ALIGNMENT);
         panel.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
-                pizza.calculatePrice(item);
+                pizza.setPrice(pizza.calculatePrice(item)+pizza.getPrice());
                 System.out.println("price wtf "+pizza.getPrice());
-                refresh();
+                refreshButton();
             }
         });
         panel.add(label);
@@ -199,6 +206,9 @@ public class ConfirmationMenu extends JPanel{
         removeAll();
         generatePanel();
         revalidate();
+    }
+    public void refreshButton(){
+        buyButt.setText("Buy for " + pizza.getPrice() * slider.getValue() + "€");
     }
 
 }

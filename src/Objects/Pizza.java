@@ -80,13 +80,14 @@ public class Pizza {
                 "Price: " + price;
     }
 
-    public void calculatePrice(String item){
+    public float calculatePrice(String item){
         switch (item) {
-            case "Sauce":  price += 0.5;break;
-            case "Cheese": price += 0.75; break;
-            case "Toppings": price += 1.0; break;
+            case "Sauce":  return 0.5f;
+            case "Cheese": return 0.75f;
+            case "Toppings": return 1.0f;
 
         };
+        return 0;
     }
 
 
