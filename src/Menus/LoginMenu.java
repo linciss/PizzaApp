@@ -1,6 +1,7 @@
 package Menus;
 
 import Objects.Person;
+import utils.WrapLayout;
 
 
 import javax.print.attribute.standard.PrinterMakeAndModel;
@@ -22,12 +23,17 @@ ConfirmationMenu ConfirmationMenu;
     }
 
     public void initPanel(){
-        w.setSize(200, 200);
         generatePanel();
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
     }
 
     public void generatePanel(){
+        JPanel imagePanel = new JPanel();
+        imagePanel.setLayout(new WrapLayout());
+        ImageIcon image = new ImageIcon("src\\Images\\LoginIcon.png");
+        imagePanel.setMaximumSize(new Dimension(400, 250));
+        imagePanel.add(new JLabel(image));
+        add(imagePanel);
 
         JPanel loginPanel = new JPanel();
         loginPanel.setLayout(new BoxLayout(loginPanel, BoxLayout.Y_AXIS));
@@ -54,15 +60,14 @@ ConfirmationMenu ConfirmationMenu;
         loginButton.addActionListener(e -> {
             if(!nameField.getText().equals("") && !addressField.getText().equals("")){
                 w.person= new Person(nameField.getText(), addressField.getText(), (rand.nextDouble()) *10 );
-                w.setSize(400, 600);
                 w.getContentPane().removeAll();
                 w.add(selectionMenu);
                 w.revalidate();
+                w.repaint();
             } else {
                 JOptionPane.showMessageDialog(null, "Credentials invalid!");
             }
         });
-
 
         loginPanel.add(nameLabel);
         loginPanel.add(nameField);
