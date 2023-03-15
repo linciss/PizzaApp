@@ -52,7 +52,7 @@ ConfirmationMenu ConfirmationMenu;
         loginButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         loginButton.addActionListener(e -> {
-            if(!nameField.getText().equals("") || !addressField.getText().equals("")){
+            if(!nameField.getText().equals("") && !addressField.getText().equals("")){
                 w.person= new Person(nameField.getText(), addressField.getText(), (rand.nextDouble()) *10 );
                 w.setSize(400, 600);
                 w.getContentPane().removeAll();

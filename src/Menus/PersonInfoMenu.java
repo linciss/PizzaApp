@@ -4,12 +4,13 @@ import Objects.Person;
 
 import javax.swing.*;
 import java.awt.*;
+import java.text.DecimalFormat;
 
 public class PersonInfoMenu extends JPanel{
     public Window w;
     public Person person;
     SelectionMenu SelectionMenu;
-
+    DecimalFormat df = new DecimalFormat(".##");
     public PersonInfoMenu(Window w, Person person, SelectionMenu SelectionMenu){
         this.person = person ;
         this.w = w;
@@ -28,7 +29,7 @@ public class PersonInfoMenu extends JPanel{
 
         JLabel nameLabel = new JLabel("Name: " + person.getName());
         JLabel addressLabel = new JLabel("Address: " + person.getAddress());
-        JLabel distanceLabel = new JLabel("Distance: " + person.getDistance());
+        JLabel distanceLabel = new JLabel("Distance: " + df.format(person.getDistance()));
 
         nameLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         addressLabel.setAlignmentX(Component.CENTER_ALIGNMENT);

@@ -7,6 +7,7 @@ import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.text.DecimalFormat;
 
 public class ConfirmationMenu extends JPanel{
     Window w;
@@ -203,7 +204,9 @@ public class ConfirmationMenu extends JPanel{
     }
 
     public void refreshButton(){
-        buyButt.setText("Buy for " + pizza.getPrice() * slider.getValue() + "€");
+        DecimalFormat df = new DecimalFormat(".##");
+        //float price = pizza.getPrice() * slider.getValue() ;
+        buyButt.setText("Buy for " + df.format(pizza.getPrice() * slider.getValue()) + "€");
     }
 
 }
