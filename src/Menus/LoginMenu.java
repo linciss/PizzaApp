@@ -47,16 +47,20 @@ ConfirmationMenu ConfirmationMenu;
         // sets layout for the addressField to be horizontal
         addressField.setMaximumSize(new Dimension(200, 20));
 
-
         //login button to login, when pressed show the selection menu
-        JButton loginButton = new JButton("Login");
+        JButton loginButton= new JButton("Login");
         loginButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+
         loginButton.addActionListener(e -> {
-            w.person= new Person(nameField.getText(), addressField.getText(), (rand.nextDouble()) *10 );
-            w.setSize(400, 600);
-            w.getContentPane().removeAll();
-            w.add(selectionMenu);
-            w.revalidate();
+            if(!nameField.getText().equals("") || !addressField.getText().equals("")){
+                w.person= new Person(nameField.getText(), addressField.getText(), (rand.nextDouble()) *10 );
+                w.setSize(400, 600);
+                w.getContentPane().removeAll();
+                w.add(selectionMenu);
+                w.revalidate();
+            } else {
+                JOptionPane.showMessageDialog(null, "Credentials invalid!");
+            }
         });
 
 
