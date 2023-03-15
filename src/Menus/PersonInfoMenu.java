@@ -18,7 +18,7 @@ public class PersonInfoMenu extends JPanel{
     ConfirmationMenu confirmationMenu;
     ArrayList<Log> orderHistory = new ArrayList<>();
     DecimalFormat df = new DecimalFormat(".##");
-    public PersonInfoMenu(Window w, Person person, SelectionMenu selectionMenu, ConfirmationMenu confirmationMenu){
+    public PersonInfoMenu(Window w, Person person, SelectionMenu selectionMenu){
         this.person = person ;
         this.w = w;
         this.selectionMenu = selectionMenu;
