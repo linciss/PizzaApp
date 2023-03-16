@@ -15,8 +15,6 @@ public class PersonInfoMenu extends JPanel{
     public Person person;
     Log log;
     SelectionMenu selectionMenu;
-    ConfirmationMenu confirmationMenu;
-    ArrayList<Log> orderHistory = new ArrayList<>();
     DecimalFormat df = new DecimalFormat(".##");
     public PersonInfoMenu(Window w, Person person, SelectionMenu selectionMenu){
         this.person = person ;
@@ -96,7 +94,7 @@ public class PersonInfoMenu extends JPanel{
         JPanel orderHistoryPanel = new JPanel();
         orderHistoryPanel = new JPanel();
         orderHistoryPanel.setLayout(new BoxLayout(orderHistoryPanel, BoxLayout.Y_AXIS));
-        orderHistoryPanel.setBackground(new Color(38, 37, 37));
+        orderHistoryPanel.setBackground(new Color(18, 18, 18));
         orderHistoryPanel.setMaximumSize(new Dimension(400, 50));
 
 

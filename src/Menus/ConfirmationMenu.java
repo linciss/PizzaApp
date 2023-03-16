@@ -139,14 +139,10 @@ public class ConfirmationMenu extends JPanel{
                         pizza.setPrice(pizza.withoutDelivery(w.person.getDistance()));
                     }
                     refreshButton();
-                    System.out.println("Debbuging for price: " + pizza.getPrice());
                     isDelivery = true;
                     isOnTheSpot = false;
                     onTheSpot.setSelected(true);
                     delivery.setSelected(false);
-                    //debugging
-                    System.out.println("isonthespot in onthespot " + isOnTheSpot);
-                    System.out.println("isdelivery in onthespot " + isDelivery);
                 }
             });
 
@@ -161,9 +157,6 @@ public class ConfirmationMenu extends JPanel{
                     refreshButton();
                     onTheSpot.setSelected(false);
                     delivery.setSelected(true);
-                    //debugging
-                    System.out.println("isonthespot in delivery"+isOnTheSpot);
-                    System.out.println("isdelivery in delivery"+isDelivery);
                 }
             });
 
@@ -205,7 +198,6 @@ public class ConfirmationMenu extends JPanel{
             w.orderHistory.add(log);
             refresh();
         });
-        System.out.println("orderhist debugg" + w.orderHistory.size());
 
 
         System.out.println("Buy butt" + buyButt.getHeight());

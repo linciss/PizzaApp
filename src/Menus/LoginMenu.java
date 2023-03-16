@@ -16,7 +16,6 @@ Random rand =  new Random();
     JTextField addressField;
 ConfirmationMenu ConfirmationMenu;
     Window w;
-    PersonInfoMenu personInfoMenu;
     SelectionMenu selectionMenu = new SelectionMenu(w, ConfirmationMenu);
 
      Person person;
