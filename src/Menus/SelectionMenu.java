@@ -80,6 +80,7 @@ public class SelectionMenu extends JPanel {
             imageIcon = new ImageIcon("src\\images\\" + pizza.getName() + ".png");
             label = new JLabel(imageIcon);
             label.setAlignmentX(Component.CENTER_ALIGNMENT);
+            label.setMaximumSize(new Dimension(120, 120));
             panel.add(label);
 
             //name
