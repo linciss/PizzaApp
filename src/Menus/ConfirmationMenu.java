@@ -245,6 +245,7 @@ public class ConfirmationMenu extends JPanel{
     }
 
     public void refresh(){
+        pizza.setPrice(pizza.getBasePrice());
             removeAll();
             generatePanel();
             revalidate();

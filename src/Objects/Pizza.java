@@ -6,6 +6,7 @@ public class Pizza {
     Random rand = new Random();
     private String top, crust, sauce, cheese, name;
     private float price;
+    private final float basePrice;
 
     public Pizza(String name, String crust, String sauce, String cheese, String top, float price){
         this.name = name;
@@ -14,8 +15,12 @@ public class Pizza {
         this.cheese = cheese;
         this.top = top;
         this.price = price;
+        this.basePrice = price;
     }
 
+    public float getBasePrice(){
+        return basePrice;
+    }
 
     public float withDelivery(double distance){
         return price += distance;
