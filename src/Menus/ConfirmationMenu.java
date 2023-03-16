@@ -223,8 +223,10 @@ public class ConfirmationMenu extends JPanel{
 
     public JPanel createPanel(String item){
         JPanel panel = new JPanel();
+        panel.setBackground(new Color(38, 37, 37));
         JLabel label = new JLabel(item);
         label.setAlignmentX(Component.CENTER_ALIGNMENT);
+        label.setForeground(new Color(187, 134, 252));
         panel.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
                 pizza.setPrice(pizza.calculatePrice(item)+pizza.getPrice());
@@ -232,6 +234,11 @@ public class ConfirmationMenu extends JPanel{
             }
         });
         panel.add(label);
+        ImageIcon image = new ImageIcon("src\\images\\" + item + "Item.png");
+        label = new JLabel(image);
+        label.setAlignmentX(Component.CENTER_ALIGNMENT);
+        panel.add(label);
+
         panel.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
         panel.setPreferredSize(new Dimension(100, 200));
         return panel;
