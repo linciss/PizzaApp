@@ -7,10 +7,13 @@ import utils.WrapLayout;
 import javax.print.attribute.standard.PrinterMakeAndModel;
 import javax.swing.*;
 import java.awt.*;
+import java.io.*;
 import java.util.Random;
 
 public class LoginMenu extends JPanel{
 Random rand =  new Random();
+    JTextField nameField;
+    JTextField addressField;
 ConfirmationMenu ConfirmationMenu;
     Window w;
     PersonInfoMenu personInfoMenu;
@@ -49,8 +52,8 @@ ConfirmationMenu ConfirmationMenu;
 
         JLabel nameLabel = new JLabel("Name");
         JLabel addressLabel = new JLabel("Address");
-        JTextField nameField = new JTextField();
-        JTextField addressField = new JTextField();
+         nameField = new JTextField();
+         addressField = new JTextField();
 
         nameLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         addressLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -75,6 +78,7 @@ ConfirmationMenu ConfirmationMenu;
         loginButton.addActionListener(e -> {
             if(!nameField.getText().equals("") && !addressField.getText().equals("")){
                 w.person= new Person(nameField.getText(), addressField.getText(), (rand.nextDouble()) *10 );
+                writeFile();
                 w.getContentPane().removeAll();
                 w.add(selectionMenu);
                 w.revalidate();
@@ -84,13 +88,60 @@ ConfirmationMenu ConfirmationMenu;
             }
         });
 
+        JButton prevLogins= new JButton("Previous login");
+        prevLogins.setAlignmentX(Component.CENTER_ALIGNMENT);
+        prevLogins.setBackground(new Color(38, 37, 37));
+        prevLogins.setForeground(new Color(187, 134, 252));
+
+        prevLogins.addActionListener(e -> {
+            readFile();
+        });
+
         loginPanel.add(nameLabel);
         loginPanel.add(nameField);
         loginPanel.add(addressLabel);
         loginPanel.add(addressField);
         loginPanel.add(loginButton);
+        loginPanel.add(prevLogins);
         add(loginPanel);
     }
+
+    public void writeFile(){
+        try {
+            FileWriter fr = new FileWriter(new File("Profile.txt"), false);
+            PrintWriter pw = new PrintWriter(fr);
+            pw.println(nameField.getText());
+            pw.println(addressField.getText());
+            pw.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public void readFile(){
+
+        try{
+
+            FileReader fr = new FileReader(new File("Profile.txt"));
+            BufferedReader br = new BufferedReader(fr);
+            while(br.ready()) {
+                for (int i = 0; i < 1; i++) {
+                    nameField.setText(br.readLine());
+                }
+                for(int i =1; i<2; i++){
+                    addressField.setText(br.readLine());
+                }
+            }
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+
+
+    }
+
 }
 
 
