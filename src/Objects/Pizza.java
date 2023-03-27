@@ -7,6 +7,7 @@ public class Pizza {
     private String top, crust, sauce, cheese, name;
     private float price;
     private final float basePrice;
+    private int orderNum = 1;
 
     public Pizza(String name, String crust, String sauce, String cheese, String top, float price){
         this.name = name;
@@ -18,6 +19,12 @@ public class Pizza {
         this.basePrice = price;
     }
 
+    public void addOrderNum(){
+        this.orderNum += 1;
+    }
+    public int getOrderNum(){
+        return orderNum;
+    }
     public float getBasePrice(){
         return basePrice;
     }

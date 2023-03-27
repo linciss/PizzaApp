@@ -74,7 +74,19 @@ ConfirmationMenu ConfirmationMenu;
         loginButton.setBackground(new Color(38, 37, 37));
         loginButton.setForeground(new Color(187, 134, 252));
 
+        System.out.println(w.oldLogin);
         loginButton.addActionListener(e -> {
+            if(!w.oldLogin)
+            {
+                try{
+                    PrintWriter pw = new PrintWriter(new File("OrderHistory.txt"));
+                    pw.print("");
+                    pw.close();
+                }catch (Exception e1)
+                {
+                    e1.printStackTrace();
+                }
+            }
             if(!nameField.getText().equals("") && !addressField.getText().equals("")){
                 w.person= new Person(nameField.getText(), addressField.getText(), (rand.nextDouble()) *10 );
                 writeFile();
@@ -94,6 +106,7 @@ ConfirmationMenu ConfirmationMenu;
 
         prevLogins.addActionListener(e -> {
             readFile();
+            w.oldLogin = true;
         });
 
         loginPanel.add(nameLabel);
@@ -125,19 +138,13 @@ ConfirmationMenu ConfirmationMenu;
             FileReader fr = new FileReader(new File("Profile.txt"));
             BufferedReader br = new BufferedReader(fr);
             while(br.ready()) {
-                for (int i = 0; i < 1; i++) {
                     nameField.setText(br.readLine());
-                }
-                for(int i =1; i<2; i++){
                     addressField.setText(br.readLine());
-                }
             }
 
         }catch (Exception e){
             e.printStackTrace();
         }
-
-
 
     }
 

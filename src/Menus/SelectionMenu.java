@@ -11,6 +11,8 @@ import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.File;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 public class SelectionMenu extends JPanel {
@@ -27,7 +29,6 @@ public class SelectionMenu extends JPanel {
 
 
     public void initPanel(){
-        System.out.println("Menus.SelectionMenu initialized");
         generatePanel();
         setLayout(new BorderLayout());
         JScrollPane scrollBar=new JScrollPane(pizzaPanel, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
@@ -56,11 +57,13 @@ public class SelectionMenu extends JPanel {
             w.getContentPane().removeAll();
             w.add(new PersonInfoMenu(w, w.person, this));
             w.revalidate();
+
         });
 
         logout.addActionListener(e -> {
             w.getContentPane().removeAll();
             w.add(new LoginMenu(w, this));
+            w.oldLogin = false;
             w.revalidate();
         });
 
@@ -68,6 +71,7 @@ public class SelectionMenu extends JPanel {
     JPanel pizzaPanel = new JPanel();
 
     public void generatePanel(){
+
         ArrayList<Pizza> pizzaPresets = PizzaPresets.getPresets();
 
         for(Pizza pizza : pizzaPresets){

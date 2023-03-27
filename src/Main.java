@@ -22,9 +22,7 @@ public class Main {
 
         ArrayList<Pizza> pizzaPresets = PizzaPresets.getPresets();
 
-        for(Pizza pizza : pizzaPresets){
-            System.out.println(pizza.toString());
-        }
+
         new Window();
     }
 }
