@@ -13,6 +13,8 @@ import java.util.ArrayList;
 
 public class Window extends JFrame {
     Log log;
+    Boolean oldLogin = false;
+
     PersonInfoMenu personInfoMenu;
     ConfirmationMenu confirmationMenu;
     SelectionMenu selectionMenu = new SelectionMenu(this, confirmationMenu);

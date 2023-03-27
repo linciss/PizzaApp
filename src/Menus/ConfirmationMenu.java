@@ -8,6 +8,9 @@ import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.PrintWriter;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -192,11 +195,15 @@ public class ConfirmationMenu extends JPanel{
         buyButt.setAlignmentX(Component.CENTER_ALIGNMENT);
         buyButt.setFont(new Font("Arial", Font.BOLD, 20));
 
+        DecimalFormat df = new DecimalFormat(".##");
         buyButt.addActionListener(e -> {
             JOptionPane.showMessageDialog(this, "Your order has been placed!");
             log = new Log(pizza.getName(), slider.getValue());
+            String orderHistory =  pizza.getName() + ", Count: " + slider.getValue() + ", Price: " + df.format(pizza.getPrice()*slider.getValue()) + "$";
+            writeFile(orderHistory);
             w.orderHistory.add(log);
             refresh();
+            pizza.addOrderNum();
         });
 
 
@@ -249,4 +256,16 @@ public class ConfirmationMenu extends JPanel{
         buyButt.setText("Buy for " + df.format(pizza.getPrice() * slider.getValue()) + "€");
     }
 
+    void writeFile(String str){
+
+        try {
+        FileWriter fr = new FileWriter(new File("OrderHistory.txt"), true);
+            PrintWriter pw = new PrintWriter(fr);
+            pw.println(str);
+            pw.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
 }
