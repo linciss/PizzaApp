@@ -1,4 +1,19 @@
-# If you dont want to run this with flatlaf then comment this line in Main class and remove lib folder!
+# :pizza:**Pizza App**:pizza:
+## This is a pizza ordering app meant for the mobile phone
+
+![image](https://user-images.githubusercontent.com/122517407/227883503-19807a12-cff2-4236-8c76-a2819032fd4e.png)
+
+## Task list
+- [ ] Make a new branch
+- [ ] Make the order history save in a file
+- [x] Finish this README
+
+
+
+
+
+---
+## If you dont want to run this with flatlaf then comment this line in Main class and remove lib folder!
 ```
   try {
             UIManager.setLookAndFeel(new FlatMacLightLaf());
