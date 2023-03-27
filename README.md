@@ -7,6 +7,7 @@
 - [x] Make a new branch
 - [x] Make the order history save in a file
 - [x] Finish this README
+- [x] Inviting a collaborator 
 
 
 
